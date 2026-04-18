@@ -1,16 +1,9 @@
 from flask import Flask, render_template
-from backend.database.db import db
 from backend.routes.analytics_routes import analytics_bp
-from backend.models.section_visit import SectionVisit
-from backend.models.user_session import UserSession
-from backend.models.section_time import SectionTime
 
 app = Flask(__name__)
 app.secret_key = 'neuroresonance_dev_secret_key_change_in_prod'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///analytics.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db.init_app(app)
 app.register_blueprint(analytics_bp)
 
 
@@ -179,18 +172,12 @@ def about():
 def about_us():
     return render_template("about_us.html")
 
-@app.route('/dashboard')
-def dashboard():
-    print("Dashboard accessed")
-    return render_template('dashboard.html')
-
-def init_db():
-    with app.app_context():
-        db.create_all()
-        print("Database tables created/verified.")
+# @app.route('/dashboard')
+# def dashboard():
+#     print("Dashboard accessed")
+#     return render_template('dashboard.html')
 
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True, host='0.0.0.0', port=5000)
 
 # gunicorn app:app --bind 0.0.0.0:8080 --workers 13 --threads 4
