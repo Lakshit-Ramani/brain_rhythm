@@ -1,6 +1,41 @@
+# 🔹 Virtual Environment
 venv/
+env/
+ENV/
+
+# 🔹 Python cache & compiled files
 __pycache__/
 *.pyc
-instance/
+*.pyo
+*.pyd
+
+# 🔹 Database files
 *.db
+*.sqlite3
+
+# 🔹 Environment variables
 .env
+
+# 🔹 VS Code / IDE files
+.vscode/
+.idea/
+
+# 🔹 OS files
+.DS_Store
+Thumbs.db
+
+# 🔹 Logs
+*.log
+
+# 🔹 Temporary files
+*.tmp
+*.swp
+
+# 🔹 Python packaging
+build/
+dist/
+*.egg-info/
+
+# 🔹 Flask specific (optional)
+instance/
+.webassets-cache
